@@ -26,7 +26,11 @@ def line():
     def sahil2(event):
         li.append(event.x)
         li.append(event.y)
-        canvas_wd.create_line(li[0], li[1], li[2], li[3], fill=f'{color[-1]}')
+        if color[-1] == '':
+            c = 'black'
+        else:
+            c = color[-1]
+        canvas_wd.create_line(li[0], li[1], li[2], li[3], fill=c)
         li.pop()
         li.pop()
         li.pop()
@@ -75,6 +79,19 @@ def oval():
 
     root.bind('<Button>', sahil)
     root.bind('<ButtonRelease>', sahil2)
+# def write():
+#     li = []
+#     def move(event):
+#         li.append(event.x)
+#         li.append(event.y)
+#         if len(li) == 4:
+#             canvas_wd.create_line(li[0],li[1],li[2],li[3])
+#             li.pop()
+#             li.pop()
+#             li.pop()
+#             li.pop()
+
+#     root.bind('<Motion>', move)
 
 
 def clear():
@@ -89,12 +106,14 @@ def color_c():
 line_button = ttk.Button(root, text="line", command=line)
 rect_button = ttk.Button(root, text="rect", command=rectangle)
 oval_button = ttk.Button(root, text="oval", command=oval)
+# write_button = ttk.Button(root,text="write",command=write)
 color_button = ttk.Button(root, text="color", command=color_c)
 clear_button = ttk.Button(root, text="clear", command=clear)
 
 line_button.pack(side=LEFT)
 rect_button.pack(side=LEFT)
 oval_button.pack(side=LEFT)
+# write_button.pack(side=LEFT)
 color_button.pack(side=LEFT)
 clear_button.pack(side=LEFT)
 
